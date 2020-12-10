@@ -1,64 +1,45 @@
-var viz;
-var workbook;
-var activeSheet;
 
-function initViz() {
-
-    var containerDiv = document.getElementById("vizContainer"),
-		//The url where the test dashboard is hosted
-        //url = "https://public.tableau.com/views/testingdashboard_16069128488460/BainwithSSD", 
-		url = "https://public.tableau.com/views/testingdashboard_v2020_1_16069842719320/Dashboard1"
-        options = {
-            hideTabs: true,
-            onFirstInteractive: function ()
-
-                {
-                    workbook = viz.getWorkbook();
-                    activeSheet = workbook.getActiveSheet();
-                    console.log("options is working");
-					//Just to confirm the dashboard is working through the web browser console
-                }
-
-        };
-	//Initializing tableau inherent object from tableau API
-    viz = new tableau.Viz(containerDiv, url, options);
+function formdata() 
+{
+var region= document.getElementById("region").value;
+var lastname1= document.getElementById("category").value;
+document.writeln("<h1>Confirmation Page</h1><br>");
+document.writeln("Thank you for completing this form.<br><br>");
+document.writeln("The first name you entered is " + firstname + "<br>");
+document.writeln("The last name you entered is " + lastname);
 }
 
 
-//A single function for all the category
-//Filter name is the name of the field
-//Filter value is the element or value of the field specified in the filterName parameter
-function category(filterName,filterValue,filterType){
-   
-   //this applies the filter to the active sheet
-    activeSheet.applyFilterAsync(filterName,filterValue,filterType)
+
+
+function initializeViz(){
+    var vizDiv = document.getElementById("tableauViz");
+ 
+    var vizUrl = "https://public.tableau.com/views/testingdashboardVersion2_16069950242490/Dashboard1?:language=en&:display_count=y&publish=yes&:origin=viz_share_link"
+    var vizOptions = {};
+
+    viz = new tableauSoftware.Viz(vizDiv, vizUrl, vizOptions);    
+
+  };
+
+function vizFilter(filterName,filterValue,filterType){
+  //getActiveSheet() can be a dashboard or a worksheet
+  sheet=viz.getWorkbook().getActiveSheet();
+
+
+if(sheet.getSheetType() === 'worksheet'){
+sheet.applyFilterAsync(filterName,filterValue,filterType);
+}
+else{
+
+worksheetArray = sheet.getWorksheets();
+for(var i =0; i < worksheetArray.length; i++)
+{
+worksheetArray[i].applyFilterAsync(filterName,filterValue,filterType);
+console.log(worksheetArray)
+}
+}
 };
-
-function cat(filterName,filterValue,filterType){
-	
-	viz.getWorkbook().activateSheetAsync("Bain with SSD")
-	
-	.then(function (){
-   
-   //this applies the filter to the active sheet
-    return activeSheet.applyFilterAsync(filterName,filterValue,filterType);
-    });
-};
-//A single function for all the regions
-//Filter name is the name of the field
-//Filter value is the element or value of the field specified in the filterName parameter
-
-function region(filterName,filterValue,filterType){
-	
-   //this applies the filter to the active sheet
-    activeSheet.applyFilterAsync(filterName,filterValue,filterType)
-};
-
-
-
-
-
-
 
 
 
