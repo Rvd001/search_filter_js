@@ -63,6 +63,12 @@ function searchFilter(filterName, filterType){
   }
   };
 
+  const searchInput = document.getElementById("category")
+  searchInput.addEventListener('input', (event) => {console.log(event.target.value);
+});
+
+//   var searchBar = document.forms["filterSearch"].querySelector('input');
+//   searchBar.addEventListener('keyup')
 
 
 
