@@ -2,20 +2,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Store Api with tableau</title>
+        <title>Dynamic Filter Value</title>
         <script src ="https://public.tableau.com/javascripts/api/tableau-2.min.js" type="text/javascript"></script>
         <script src="code.js" type="text/javascript"></script>
     </head>
     <body onload="initializeViz();">
 
         <div id ="tableauFilters">
-        <p class= "runCode">Category Filters</p>
+        <p class= "runCode">Category Search Filters</p>
 
 
         <form><br>
        
             Enter Category: <input type="text" id="category"/><input type="submit" value="Submit" onclick="searchFilter('Category', 'REPLACE')"/><br>
-        </form>
+        </form><br>
       
 
             <button onclick="vizFilter('Category', 'Furniture', 'REPLACE')">Furniture</button>
