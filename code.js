@@ -1,13 +1,13 @@
 
-function formdata() 
-{
-var region= document.getElementById("region").value;
-var lastname1= document.getElementById("category").value;
-document.writeln("<h1>Confirmation Page</h1><br>");
-document.writeln("Thank you for completing this form.<br><br>");
-document.writeln("The first name you entered is " + firstname + "<br>");
-document.writeln("The last name you entered is " + lastname);
-}
+// function formdata() 
+// {
+// var region= document.getElementById("region").value;
+// var lastname1= document.getElementById("category").value;
+// document.writeln("<h1>Confirmation Page</h1><br>");
+// document.writeln("Thank you for completing this form.<br><br>");
+// document.writeln("The first name you entered is " + firstname + "<br>");
+// document.writeln("The last name you entered is " + lastname);
+// }
 
 
 
@@ -48,7 +48,7 @@ function searchFilter(filterName, filterType){
     sheet=viz.getWorkbook().getActiveSheet();
     var filterValue = document.getElementById("category").value;
     
-  
+  console.log(filterValue);
   if(sheet.getSheetType() === 'worksheet'){
   sheet.applyFilterAsync(filterName,filterValue,filterType);
   }
