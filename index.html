@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>kayl.com</title>
+    <link rel="stylesheet" type="text/css", href="code.css"/>
+    <script src="code.js"></script>
+    <script src="https://public.tableau.com/javascripts/api/tableau-2.6.0.min.js"></script>
+</head>
+
+<body onload="initViz();">
+		<h3> Category</h3>
+        <div id="filterSelection" style="padding:2px;">
+		<!-- The padding give space around the button in the div element-->
+		<!-- creating a button  -->
+		<!-- category is a function with filter parameters passed to avoid repetition of functions -->
+            <button type="button" id = "West" onclick="cat('Category', 'Furniture', 'REPLACE')">Furniture</button>
+            <button type="button" id = "East" onclick="category('Category', 'Office Supplies', 'ADD')">Office Supplies</button>
+            <button type="button" id = "South" onclick="category('Category', 'Technology', 'REPLACE')">Technology</button>
+        </div>
+        <br>
+
+
+
+        <form><br>
+            Enter Region: <input type="text" id="region"/><br><br>
+            Enter Category: <input type="text" id="category"/><br><br>
+            <input type="submit" value="Submit" onclick="formdata()"/><br>
+        </form>
+      
+        
+	  
+		<h3> Region Filter</h3>
+        <div id="filterSelection" style="padding:2px;">
+		<!-- The region is a function in Javascript with filter parameters passed to avoid writing the functions repeatedly -->
+            <button type="button" id = "West" onclick="region('Region', 'West', 'REPLACE')">West</button>
+            <button type="button" id = "Central" onclick="region('Region', 'Central', 'REPLACE')">Central</button>
+            <button type="button" id = "East" onclick="region('Region', 'East', 'REPLACE')">East</button>
+			<button type="button" id = "South" onclick="region('Region', 'South', 'REPLACE')">South</button>
+        </div>
+        <br>
+		<!-- This container houses the visualization -->
+        <div id="vizContainer"></div>
+        <!-- This houses the visualization -->
+
+</body>
+</html>
